@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GarageProject
 {
-    class Vehicle : IGarageHandler
+  public  class Vehicle : IGarageHandler
     {
         public string RegNo { get; set; }
         public string Color { get; set; }
@@ -20,12 +20,13 @@ namespace GarageProject
        
     }
 
-    class Cars : Vehicle
+    public class Cars : Vehicle
     {
         public int NumEng { get; set; }
         public int  Key = 1;
 
-        public Cars(string name, string regNo, string color, int numWheels, int numEng) : base(name, regNo, color, numWheels)
+        public Cars(string name, string regNo, string color, int numWheels, int numEng) : // constructor
+            base(name, regNo, color, numWheels)
         {
             NumEng = numEng;
 
@@ -33,20 +34,22 @@ namespace GarageProject
 
     }
 
-    class Motorcycles : Vehicle
+    public class Motorcycles : Vehicle
     {
         public int CylVol { get; set; }
-        public Motorcycles(string name, string regNo, string color, int numWheels, int cylVol) : base(name, regNo, color, numWheels)
+        public Motorcycles(string name, string regNo, string color, int numWheels, int cylVol) : // constructor
+            base(name, regNo, color, numWheels)
         {
             CylVol = cylVol;
         }
 
     }
 
-    class Mopeds : Vehicle
+    public class Mopeds : Vehicle
     {
         public string FuelType { get; set; }
-        public Mopeds(string name, string regNo, string color, int numWheels, string fuelType) : base(name, regNo, color, numWheels)
+        public Mopeds(string name, string regNo, string color, int numWheels, string fuelType) : // constructor
+            base(name, regNo, color, numWheels)
         {
             FuelType = fuelType;
 
@@ -54,10 +57,11 @@ namespace GarageProject
 
     }
 
-    class Airplane : Vehicle
+    public class Airplane : Vehicle
     {
         public int NumSeats { get; set; }
-        public Airplane(string name,string regNo, string color, int numWheels, int numSeats) : base(name, regNo, color, numWheels)
+        public Airplane(string name,string regNo, string color, int numWheels, int numSeats) : // constructor
+            base(name, regNo, color, numWheels)
         {
             NumSeats = numSeats;
 
@@ -65,38 +69,38 @@ namespace GarageProject
         
     }
 
-    class Bus : Vehicle
+    public class Bus : Vehicle
     {
         public int NumSeats { get; set; }
-        public Bus(string name, string regNo, string color, int numWheels, int numSeats) : base(name, regNo, color, numWheels) 
+        public Bus(string name, string regNo, string color, int numWheels, int numSeats) : // constructor
+            base(name, regNo, color, numWheels) 
         {
             NumSeats = numSeats;
 
         }
     }
 
-    class Boat : Vehicle
+    public class Boat : Vehicle
     {
         public int Lenght { get; set; }
 
-        public Boat(string name, string regNo, string color, int numWheels, int lenght) : base(name, regNo, color, numWheels)
+        public Boat(string name, string regNo, string color, int numWheels, int lenght) : // constructor
+            base(name, regNo, color, numWheels)
         {
             Lenght = lenght;
         }
 
     }
 
-    class Bicycle : Vehicle
+    public class Bicycle : Vehicle
     {
         public int NumSeats { get; set; }
-        public Bicycle(string name, string regNo, string color, int numWheels, int numSeats) : base(name, regNo, color, numWheels) 
+        public Bicycle(string name, string regNo, string color, int numWheels, int numSeats) : // constructor
+            base(name, regNo, color, numWheels) 
         {
             NumSeats = numSeats;
         }
     }
-
-
-
 
 
 }

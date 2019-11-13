@@ -1,12 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 
+
+using System.IO;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Text;
+using System.Threading.Tasks;
+
 namespace GarageProject
 {
     class Program
     {
         static void Main(string[] args)
         {
+            UI garagePark = new UI();
 
             var garage = new Garage<Vehicle>(10);
             garage.Add(new Cars("Car", "112AB", "red", 4, 12));
@@ -29,6 +38,7 @@ namespace GarageProject
                      + "\n4. Show maximum capacity of the Garage "
                      + "\n5. Find a vehicles based on color and wheels"
                      + "\n6. Search on a vehicle based on Reg Number"
+                     + "\n7. Save and load from File"
                      + "\n0. Exit the application");
 
                 char input = ' '; //Creates the character input to be used with the switch-case below.
@@ -46,17 +56,22 @@ namespace GarageProject
                 {
                     case '1':
 
-                        garage.WriteAll(garage);
+                        garagePark.WriteAll(garage);
                         break;
 
                     case '2':
 
-                        garage.CountVehicle(garage);
+                        garagePark.CountVehicle(garage);
                         break;
 
                     case '3':
 
-                        garage.PushPopList(garage);
+                        Console.WriteLine("Type '+' or '-'  to add or remove from the list or zero to exit :");
+
+                        string input1 = Console.ReadLine();
+                        char nav = input1[0];        
+
+                        garagePark.PushPopList(garage, garagePark, nav, input1);
                         break;
 
                     case '4':
@@ -65,24 +80,49 @@ namespace GarageProject
                         break;
 
                     case '5':
-                         
-                        garage.FindVehicleColorwheels(garage);
+
+                        Console.WriteLine("Enter vehicle color:");
+                        string valueColor = Console.ReadLine();
+
+                        Console.WriteLine("Enter vehicle numWheels:");
+                        string valuenumWheels = Console.ReadLine();
+                        int IntValue = Int32.Parse(valuenumWheels);
+
+                        garagePark.FindVehicleColorwheels(garage, valueColor, IntValue);
                         break;
 
                     case '6':
 
-                        garage.SearchVehicle(garage);
+                        Console.WriteLine("Enter vehicle Reg number:");
+                        string valueRegNum = Console.ReadLine();
+
+                        garagePark.SearchVehicle(garage, valueRegNum);
                         break;
-                    /*
-                     * Extend the menu to include the recursive 
-                     * and iterative exercises.
-                     */
+
+                    case '7':
+
+                      
+                        IFormatter formatter = new BinaryFormatter();
+                        Stream stream = new FileStream(@"C:\Users\Elev\Desktop\ExampleNew.txt", FileMode.Create, FileAccess.Write);
+
+                        formatter.Serialize(stream, garage);
+                        stream.Close();
+
+                        stream = new FileStream(@"C:\Users\Elev\Desktop\ExampleNew.txt", FileMode.Open, FileAccess.Read);
+                        Garage objnew = (Garage)formatter.Deserialize(stream);
+
+                        Console.WriteLine(objnew);
+                        //Console.WriteLine(objnew.Name);
+
+                        Console.ReadKey();
+
+                        break;
 
                     case '0':
                         return;
 
                     default:
-                        Console.WriteLine("Please enter some valid input (0, 1, 2, 3, 4)");
+                        Console.WriteLine("Please enter some valid input (0, 1, 2, 3, 4, 5, 6)");
                         break;
 
                 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+//using Garage;
 
 namespace UnitTestProject1
 {
@@ -9,6 +10,8 @@ namespace UnitTestProject1
         [TestMethod]
         public void TestMethod1()
         {
+            var garage = new Garage<Vehicle>(10);
+            
 
         }
     }
