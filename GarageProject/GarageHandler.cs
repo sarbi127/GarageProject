@@ -56,7 +56,7 @@ namespace GarageProject
             return garage.Remove(vehicle);
         }
 
-        // Remove vehicle with regNo
+        // Remove vehicle base on regNo
         public void RemoveRegNumHandler(string valueregNo)
         {
             for (int i = garage.Count - 1; i >= 0; i--)
@@ -77,14 +77,12 @@ namespace GarageProject
             int IntValue = uI.Validinput(input2);
             garage = new Garage<Vehicle>(IntValue);
 
-            //garage.capacity = IntValue;
-
             Console.WriteLine("\nMax Garage Capacity: {0}", garage.capacity );
             //return capNew;
 
         }
 
-        // Find vehicle with color and wheels
+        // Find vehicle base on color and wheels
         public void FindVehicleColorwheelsHandler(string valueColor, int IntValue)
         {
             bool InGarage = false;

@@ -6,6 +6,8 @@ namespace GarageProject
 {
      class UI 
      {
+        Action<string> printAction = i => Console.WriteLine(i);
+
         //Push and pop to garage
         public void ParkUnPark(char nav, string input, GarageHandler garageHandler)
         {
@@ -18,7 +20,7 @@ namespace GarageProject
                     }
                 case '+':
                     {
-                        Console.WriteLine("Enter Key number to add vehicle: " +
+                        printAction("Enter Key number to add vehicle: " +
                             "\n1 Car" +
                             "\n2 Motorcycles" +
                             "\n3 Mopeds" +
@@ -31,7 +33,8 @@ namespace GarageProject
 
                         if (valueKey != "1" && valueKey != "2" && valueKey != "3" && valueKey != "4" && valueKey != "5" && valueKey != "6" && valueKey != "7")
                         {
-                            Console.WriteLine("Your enter key is wrong!");
+                            printAction($"Your enter key is wrong!");
+
                         }
                         else
                         {
@@ -41,79 +44,79 @@ namespace GarageProject
                             string valueColor = input.Substring(1);
                             string valuenumWheels = input.Substring(1);
 
-                            Console.WriteLine("Enter vehicle regNo:");
+                            printAction("Enter vehicle regNo:");
                             valueregNo = Console.ReadLine();
 
-                            Console.WriteLine("Enter vehicle color:");
+                            printAction("Enter vehicle color:");
                             valueColor = Console.ReadLine();
 
                             if (valueKey == "1")
                             {
-                                Console.WriteLine("Enter number of engin:");
+                                printAction("Enter number of engin:");
                                 valueNum = Console.ReadLine();
                                 var IntValue = Validinput(valueNum);
 
                                 garageHandler.Add(new Cars("car", valueregNo, valueColor, 4, IntValue));
-                                Console.WriteLine($"This car  park: {valueregNo}, {valueColor}, {4},{IntValue}");
+                                printAction($"This car  park: {valueregNo}, {valueColor}, {4},{IntValue}");
 
                             }
                             else if (valueKey == "2")
                             {
-                                Console.WriteLine("Enter cylinder volume:");
+                                printAction("Enter cylinder volume:");
                                 valueNum = Console.ReadLine();
                                 var IntValue = Validinput(valueNum);
 
                                 garageHandler.Add(new Motorcycles("motorcycle", valueregNo, valueColor, 2, IntValue));
-                                Console.WriteLine($"This motorcycle park:  {valueregNo}, {valueColor}, {2},{IntValue} ");
+                                printAction($"This motorcycle park:  {valueregNo}, {valueColor}, {2},{IntValue} ");
 
                             }
                             else if (valueKey == "3")
                             {
-                                Console.WriteLine("Enter fuel type volume:");
+                                printAction("Enter fuel type volume:");
                                 valueNum = Console.ReadLine();
 
                                 garageHandler.Add(new Mopeds("Mopeds", valueregNo, valueColor, 2, valueNum));
-                                Console.WriteLine($"This mopeds park: {valueregNo}, {valueColor}, {2},{valueNum}");
+                                printAction($"This mopeds park: {valueregNo}, {valueColor}, {2},{valueNum}");
 
                             }
                             else if (valueKey == "4")
                             {
-                                Console.WriteLine("Enter number of seats:");
+                                printAction("Enter number of seats:");
                                 valueNum = Console.ReadLine();
                                 var IntValue = Validinput(valueNum);
 
                                 garageHandler.Add(new Airplane("Airplane", valueregNo, valueColor, 2, IntValue));
-                                Console.WriteLine($"This airplane park:  {valueregNo}, {valueColor},{2},{IntValue}");
+                                printAction($"This airplane park:  {valueregNo}, {valueColor},{2},{IntValue}");
 
                             }
                             else if (valueKey == "5")
                             {
-                                Console.WriteLine("Enter number of seats:");
+                                printAction("Enter number of seats:");
                                 valueNum = Console.ReadLine();
                                 var IntValue = Validinput(valueNum);
 
                                 garageHandler.Add(new Bus("Bus", valueregNo, valueColor, 4, IntValue));
-                                Console.WriteLine($"This bus park:  {valueregNo}, {valueColor},{4},{IntValue}");
+                                printAction($"This bus park:  {valueregNo}, {valueColor},{4},{IntValue}");
 
                             }
                             else if (valueKey == "6")
                             {
-                                Console.WriteLine("Enter length:");
+                                printAction("Enter length:");
                                 valueNum = Console.ReadLine();
                                 var IntValue = Validinput(valueNum);
 
                                 garageHandler.Add(new Boat("Boat", valueregNo, valueColor, 0, IntValue));
-                                Console.WriteLine($"This boat park:  {valueregNo}, {valueColor},{0},{IntValue}");
+                                printAction($"This boat park:  {valueregNo}, {valueColor},{0},{IntValue}");
 
                             }
                             else if (valueKey == "7")
                             {
-                                Console.WriteLine("Enter number of seats:");
+                                printAction("Enter number of seats:");
                                 valueNum = Console.ReadLine();
                                 var IntValue = Validinput(valueNum);
 
                                 garageHandler.Add(new Bicycle("Bicycle", valueregNo, valueColor, 2, IntValue));
-                                Console.WriteLine($"This bicycle park: {valueregNo}, {valueColor},{2},{IntValue}");
+                                printAction($"This bicycle park: {valueregNo}, {valueColor},{2},{IntValue}");
 
                             }
                         }
@@ -136,7 +139,7 @@ namespace GarageProject
 
                         if (valueKey != "1" && valueKey != "2" && valueKey != "3" && valueKey != "4" && valueKey != "5" && valueKey != "6" && valueKey != "7")
                         {
-                            Console.WriteLine("Your enter key is wrong!");
+                            printAction("Your enter key is wrong!");
                         }
                         else
                         {
@@ -146,78 +149,78 @@ namespace GarageProject
                             string valueColor = input.Substring(1);
                             string valuenumWheels = input.Substring(1);
 
-                            Console.WriteLine("Enter vehicle regNo:");
+                            printAction("Enter vehicle regNo:");
                             valueregNo = Console.ReadLine();
 
-                            Console.WriteLine("Enter vehicle color:");
+                            printAction("Enter vehicle color:");
                             valueColor = Console.ReadLine();
 
                             if (valueKey == "1")
                             {
-                                Console.WriteLine("Enter number of engin:");
+                                printAction("Enter number of engin:");
                                 valueNum = Console.ReadLine();
                                 var IntValue = Validinput(valueNum);
 
                                 garageHandler.RemoveRegNumHandler(valueregNo);
-                                Console.WriteLine($"This car unpark: {valueregNo}, {valueColor}, {4}, {IntValue}");
+                                printAction($"This car unpark: {valueregNo}, {valueColor}, {4}, {IntValue}");
 
                             }
                             else if (valueKey == "2")
                             {
-                                Console.WriteLine("Enter cylinder volume:");
+                                printAction("Enter cylinder volume:");
                                 valueNum = Console.ReadLine();
                                 var IntValue = Validinput(valueNum);
 
                                 garageHandler.RemoveRegNumHandler(valueregNo);
-                                Console.WriteLine($"This motorcycle unpark:  {valueregNo}, {valueColor}, {2}, {IntValue} ");
+                                printAction($"This motorcycle unpark:  {valueregNo}, {valueColor}, {2}, {IntValue} ");
 
                             }
                             else if (valueKey == "3")
                             {
-                                Console.WriteLine("Enter fuel type volume:");
+                                printAction("Enter fuel type volume:");
                                 valueNum = Console.ReadLine();
 
                                 garageHandler.RemoveRegNumHandler(valueregNo);
-                                Console.WriteLine($"This mopeds unpark: {valueregNo}, {valueColor}, {2},{valueNum}");
+                                printAction($"This mopeds unpark: {valueregNo}, {valueColor}, {2},{valueNum}");
                             }
                             else if (valueKey == "4")
                             {
-                                Console.WriteLine("Enter number of seats:");
+                                printAction("Enter number of seats:");
                                 valueNum = Console.ReadLine();
                                 var IntValue = Validinput(valueNum);
 
                                 garageHandler.RemoveRegNumHandler(valueregNo);
-                                Console.WriteLine($"This airplane unpark:  {valueregNo}, {valueColor},{2}, {IntValue}");
+                                printAction($"This airplane unpark:  {valueregNo}, {valueColor},{2}, {IntValue}");
 
                             }
                             else if (valueKey == "5")
                             {
-                                Console.WriteLine("Enter number of seats:");
+                                printAction("Enter number of seats:");
                                 valueNum = Console.ReadLine();
                                 var IntValue = Validinput(valueNum);
 
                                 garageHandler.RemoveRegNumHandler(valueregNo);
-                                Console.WriteLine($"This bus unpark:  {valueregNo}, {valueColor},{4}, {IntValue}");
+                                printAction($"This bus unpark:  {valueregNo}, {valueColor},{4}, {IntValue}");
 
                             }
                             else if (valueKey == "6")
                             {
-                                Console.WriteLine("Enter length:");
+                                printAction("Enter length:");
                                 valueNum = Console.ReadLine();
                                 var IntValue = Validinput(valueNum);
 
                                 garageHandler.RemoveRegNumHandler(valueregNo);
-                                Console.WriteLine($"This boat unpark:  {valueregNo}, {valueColor},{0}, {IntValue}");
+                                printAction($"This boat unpark:  {valueregNo}, {valueColor},{0}, {IntValue}");
 
                             }
                             else if (valueKey == "7")
                             {
-                                Console.WriteLine("Enter number of seats:");
+                                printAction("Enter number of seats:");
                                 valueNum = Console.ReadLine();
                                 var IntValue = Validinput(valueNum);
 
                                 garageHandler.RemoveRegNumHandler(valueregNo);
-                                Console.WriteLine($"This bicycle unpark: {valueregNo}, {valueColor},{2}, {IntValue}");
+                                printAction($"This bicycle unpark: {valueregNo}, {valueColor},{2}, {IntValue}");
                             }
                         }
 
@@ -230,7 +233,7 @@ namespace GarageProject
         // Write Count number of each vehicle
         public void CountVehicleWrite(Dictionary<string, int> dict)
         {
-            Console.WriteLine($"Cars: {dict["car"]}" +
+            printAction($"Cars: {dict["car"]}" +
                 $"\nMotorcycles: {dict["motorcycle"]}" +
                 $"\nMopeds: {dict["mopeds"] }" +
                 $"\nAirplanes: {dict["airplan"]}" +
@@ -242,22 +245,24 @@ namespace GarageProject
         // Write Find Vehicle Color and  wheels
         public void FindVehicleColorwheelsHandlerWrite(string valueColor, int IntValue, string VehicleName, string VehicleRegNo)
         {
-            Console.WriteLine($"This vehicle have {valueColor} color and {IntValue} wheels: {VehicleName}, {VehicleRegNo}");
+            printAction($"This vehicle have {valueColor} color and {IntValue} wheels: {VehicleName}, {VehicleRegNo}");
         }
 
         // Write Search Vehicle base on RegNum
         public void SearchVehicleHandlerWrite(string valueRegNum, string VehicleName, string VehicleColor, int VehicleWheels)
         {
-            Console.WriteLine($"This vehicle have {VehicleColor} color and {VehicleWheels} wheels: {VehicleName}, {valueRegNum}");
+            printAction($"This vehicle have {VehicleColor} color and {VehicleWheels} wheels: {VehicleName}, {valueRegNum}");
         }
+        
 
         // Not found message
         public void NotFound()
         {
-            Console.WriteLine($"This vehicle not found!");
+            printAction($"This vehicle not found!");
+            return;
         }
 
-        // It shouldn’t crash if you enter a string where the program expects an integer
+        // Shouldn’t crash if you enter a string where the program expects an integer
         public int Validinput(string valueNum)
         {
             int retval;

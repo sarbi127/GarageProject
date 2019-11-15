@@ -23,6 +23,24 @@ namespace XUnitTestProject1
         }
 
         [Fact]
+        public void RemoveTest()
+        {
+            // arrange
+            var garage = new Garage<Vehicle>(10);
+            garage.Add(new Bicycle("Bicycle", "11", "red", 2, 1));
+            garage.Add(new Cars("Car", "112AB", "red", 4, 12));
+            garage.Add(new Cars("Car", "112B", "red", 4, 12));
+            garage.Add(new Motorcycles("motorcycles", "112b", "green", 2, 13));
+
+            // act
+            var result = garage.Remove(new Bicycle("Bicycle", "11", "red", 2, 1));
+
+            // assert
+            Assert.True(result);
+
+        }
+
+        [Fact]
         public void CapacityTest()
         {
             // arrange
@@ -54,6 +72,5 @@ namespace XUnitTestProject1
         }
 
     }
-
-   
+  
  }

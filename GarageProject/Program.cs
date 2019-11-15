@@ -13,6 +13,8 @@ namespace GarageProject
     {
         static void Main(string[] args)
         {
+            Action<string> printActioMain = i => Console.WriteLine(i);
+
             UI ui = new UI();
             var garageHandler = new GarageHandler(10);
             //var garage = new Garage<Vehicle>(20);
@@ -56,7 +58,7 @@ namespace GarageProject
 
                         foreach (var v in garageHandler.GetVehicleInfo())
                         {
-                            Console.WriteLine($"this vehicle park: {v.Name}, {v.Color}, {v.RegNo}");                           
+                            printActioMain($"this vehicle park: {v.Name}, {v.Color}, {v.RegNo}");                           
                         }
                         break;
 
