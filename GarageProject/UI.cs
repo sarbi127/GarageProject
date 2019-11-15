@@ -269,7 +269,7 @@ namespace GarageProject
             bool tf = Int32.TryParse(valueNum, out retval);
             while (!tf)
             {
-                Console.WriteLine("Incorrect format!");
+                printAction("Incorrect format!");
                 valueNum = Console.ReadLine();
                 tf = Int32.TryParse(valueNum, out retval);
             }
