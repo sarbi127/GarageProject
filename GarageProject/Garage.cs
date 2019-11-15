@@ -6,6 +6,7 @@ using System.Text;
 
 namespace GarageProject
 {
+    [Serializable]
     public class Garage<T> : IEnumerable<T> where T : Vehicle
     {
         public int capacity { get; set; }

@@ -4,7 +4,8 @@ using System.Text;
 
 namespace GarageProject
 {
-  public class Vehicle
+    [Serializable]
+    public class Vehicle
     {
         public string RegNo { get; set; }
         public string Color { get; set; }
@@ -47,8 +48,8 @@ namespace GarageProject
 
     public class Mopeds : Vehicle
     {
-        public string FuelType { get; set; }
-        public Mopeds(string name, string regNo, string color, int numWheels, string fuelType) : // constructor
+        public int FuelType { get; set; }
+        public Mopeds(string name, string regNo, string color, int numWheels, int fuelType) : // constructor
             base(name, regNo, color, numWheels)
         {
             FuelType = fuelType;

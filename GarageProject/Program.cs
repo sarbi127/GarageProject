@@ -17,7 +17,7 @@ namespace GarageProject
 
             UI ui = new UI();
             var garageHandler = new GarageHandler(10);
-            //var garage = new Garage<Vehicle>(20);
+            var garage = new Garage<Vehicle>(20);
 
             garageHandler.Add(new Cars("Car", "112AB", "red", 4, 12));
             garageHandler.Add(new Cars("Car", "112B", "red", 4, 12));
@@ -35,8 +35,8 @@ namespace GarageProject
                      + "\n1. List all parked vehicles"
                      + "\n2. List all vehicle types currently parked in the garage and how many of each kind"
                      + "\n3. Park and unpark specific vehicles from the garage"
-                     + "\n4. Search on a vehicle based on Reg Number"
-                     + "\n5. Find a vehicles based on color and wheels"
+                     + "\n4. Find a vehicles based on color and wheels "
+                     + "\n5. Search on a vehicle based on Reg Number"
                      + "\n6. Set maximum capacity of the Garage "
                      + "\n7. Save and load from File"
                      + "\n0. Exit the application");
@@ -70,7 +70,6 @@ namespace GarageProject
                     case '3':
 
                         Console.WriteLine("Type '+' or '-'  to park or unpark from the Garage or zero to exit :");
-
                         string input1 = Console.ReadLine();
                         char nav = input1[0];
 
@@ -81,7 +80,6 @@ namespace GarageProject
 
                         Console.WriteLine("Enter vehicle color:");
                         string valueColor = Console.ReadLine();
-
                         Console.WriteLine("Enter vehicle numWheels:");
                         string valuenumWheels = Console.ReadLine();
 
@@ -107,20 +105,22 @@ namespace GarageProject
 
                     case '7':
 
-                      
-                        //IFormatter formatter = new BinaryFormatter();
-                        //Stream stream = new FileStream(@"C:\Users\Elev\Desktop\ExampleNew.txt", FileMode.Create, FileAccess.Write);
+                        BinaryFormatter formatter = new BinaryFormatter();
+                        FileStream stream = new FileStream(@"C:\Users\Elev\Desktop\ExampleNew.txt", FileMode.Create, FileAccess.Write);
 
-                        //formatter.Serialize(stream, garage);
-                        //stream.Close();
+                        formatter.Serialize(stream, garageHandler);
+                        stream.Close();
 
-                        //stream = new FileStream(@"C:\Users\Elev\Desktop\ExampleNew.txt", FileMode.Open, FileAccess.Read);
-                        //Garage objnew = (Garage)formatter.Deserialize(stream);
+                        stream = new FileStream(@"C:\Users\Elev\Desktop\ExampleNew.txt", FileMode.Open, FileAccess.Read);
+                        GarageHandler objnew = (GarageHandler)formatter.Deserialize(stream);
 
-                        //Console.WriteLine(objnew);
-                        ////Console.WriteLine(objnew.Name);
+                        foreach (var v in garageHandler.GetVehicleInfo())
+                        {
+                            printActioMain($"this vehicle park: {v.Name}, {v.Color}, {v.RegNo}");
+                        }
+                        //Console.WriteLine(objnew.Name);
 
-                        //Console.ReadKey();
+                        Console.ReadKey();
 
                         break;
 

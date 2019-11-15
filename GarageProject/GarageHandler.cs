@@ -5,6 +5,7 @@ using System.Text;
 
 namespace GarageProject
 {
+    [Serializable]
     public class GarageHandler
     {
         Garage<Vehicle> garage;
@@ -65,10 +66,8 @@ namespace GarageProject
                 {
                     garage.Remove(garage[i]);
                     //mylist.RemoveAt(i);
-                }
-               
+                }              
             }
-
         }
 
         // Set Max Capacity
@@ -96,14 +95,12 @@ namespace GarageProject
                     uI.FindVehicleColorwheelsHandlerWrite(valueColor, IntValue, VehicleName, VehicleRegNo);
                     InGarage = true;
 
-                }
-              
+                }             
             }
             if (InGarage == false)
             {
                 uI.NotFound();
             }
-
         }
 
         // Get Vehicle Information
@@ -137,9 +134,7 @@ namespace GarageProject
             if (InGarage == false)
             {
                 uI.NotFound();
-            }
-            
+            }            
         }
-
     }
 }
