@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-
-
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -15,18 +13,19 @@ namespace GarageProject
     {
         static void Main(string[] args)
         {
-            UI garagePark = new UI();
+            UI ui = new UI();
 
-            var garage = new Garage<Vehicle>(10);
-            garage.Add(new Cars("Car", "112AB", "red", 4, 12));
-            garage.Add(new Cars("Car", "112B", "red", 4, 12));
-            garage.Add(new Motorcycles("motorcycles", "112a", "green", 2, 13));
-            garage.Add(new Motorcycles("motorcycles", "112b", "green", 2, 13));
-            garage.Add(new Mopeds("mopeds", "122BB", "blue", 2, "14"));
-            garage.Add(new Airplane("Airplane", "132AA", "red", 2, 15));
-            garage.Add(new Airplane("Airplane", "132SS", "white", 2, 15));
-            garage.Add(new Bus("Bus", "132AA", "white", 2, 1));
-            garage.Add(new Boat("Boat", "13", "white", 0, 0));
+            var garageHandler = new GarageHandler(10);
+            //var garage = new Garage<Vehicle>(20);
+
+            garageHandler.Add(new Cars("Car", "112AB", "red", 4, 12));
+            garageHandler.Add(new Cars("Car", "112B", "red", 4, 12));
+            garageHandler.Add(new Motorcycles("motorcycles", "112b", "green", 2, 13));
+            garageHandler.Add(new Motorcycles("motorcycles", "112b", "green", 2, 13));
+            garageHandler.Add(new Airplane("Airplane", "132AA", "red", 2, 15));
+            garageHandler.Add(new Bus("Bus", "132aa", "white", 2, 1));
+            
+
 
             while (true)
             {
@@ -54,14 +53,21 @@ namespace GarageProject
                 }
                 switch (input)
                 {
+
                     case '1':
 
-                        garagePark.WriteAll(garage);
+                        foreach (var v in garageHandler.GetVehicleInfo())
+                        {
+                            Console.WriteLine($"this vehicle park: {v.Name}, {v.Color}, {v.RegNo}");
+                            
+                        }
+
+                        //garageHandler.WriteAllHandler();
                         break;
 
                     case '2':
 
-                        garagePark.CountVehicle(garage);
+                        garageHandler.CountVehicleHandler();
                         break;
 
                     case '3':
@@ -69,14 +75,18 @@ namespace GarageProject
                         Console.WriteLine("Type '+' or '-'  to add or remove from the list or zero to exit :");
 
                         string input1 = Console.ReadLine();
-                        char nav = input1[0];        
+                        char nav = input1[0];
 
-                        garagePark.PushPopList(garage, garagePark, nav, input1);
+                        ui.ParkUnPark( nav, input1, garageHandler);
                         break;
 
                     case '4':
+                        Console.WriteLine("Please enter garage capacity:");
+                        string input2 = Console.ReadLine();
                         
-                        Console.WriteLine("\nMax Garage Capacity: {0}", garage.capacity);
+                        garageHandler.CapacityGarageHandler(input2);
+
+                        
                         break;
 
                     case '5':
@@ -88,7 +98,7 @@ namespace GarageProject
                         string valuenumWheels = Console.ReadLine();
                         int IntValue = Int32.Parse(valuenumWheels);
 
-                        garagePark.FindVehicleColorwheels(garage, valueColor, IntValue);
+                        garageHandler.FindVehicleColorwheelsHandler(valueColor, IntValue);
                         break;
 
                     case '6':
@@ -96,25 +106,25 @@ namespace GarageProject
                         Console.WriteLine("Enter vehicle Reg number:");
                         string valueRegNum = Console.ReadLine();
 
-                        garagePark.SearchVehicle(garage, valueRegNum);
+                        garageHandler.SearchVehicleHandler(valueRegNum);
                         break;
 
                     case '7':
 
                       
-                        IFormatter formatter = new BinaryFormatter();
-                        Stream stream = new FileStream(@"C:\Users\Elev\Desktop\ExampleNew.txt", FileMode.Create, FileAccess.Write);
+                        //IFormatter formatter = new BinaryFormatter();
+                        //Stream stream = new FileStream(@"C:\Users\Elev\Desktop\ExampleNew.txt", FileMode.Create, FileAccess.Write);
 
-                        formatter.Serialize(stream, garage);
-                        stream.Close();
+                        //formatter.Serialize(stream, garage);
+                        //stream.Close();
 
-                        stream = new FileStream(@"C:\Users\Elev\Desktop\ExampleNew.txt", FileMode.Open, FileAccess.Read);
-                        Garage objnew = (Garage)formatter.Deserialize(stream);
+                        //stream = new FileStream(@"C:\Users\Elev\Desktop\ExampleNew.txt", FileMode.Open, FileAccess.Read);
+                        //Garage objnew = (Garage)formatter.Deserialize(stream);
 
-                        Console.WriteLine(objnew);
-                        //Console.WriteLine(objnew.Name);
+                        //Console.WriteLine(objnew);
+                        ////Console.WriteLine(objnew.Name);
 
-                        Console.ReadKey();
+                        //Console.ReadKey();
 
                         break;
 

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GarageProject
 {
-  public  class Vehicle : IGarageHandler
+  public class Vehicle
     {
         public string RegNo { get; set; }
         public string Color { get; set; }
