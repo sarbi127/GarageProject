@@ -11,17 +11,17 @@ namespace GarageProject
         public int capacity { get; set; }
 
         //private readonly List<T> list;
-        private T[] list;
+        private T[] arr;
 
         public Garage(int capacity)
         {
             this.capacity = Math.Max(0, capacity);
             //list = new List<T>(capacity);
-            list = new T[capacity];
+            arr = new T[capacity];
 
         }
 
-        public int Count => list.Count(v => v != null);
+        public int Count => arr.Count(v => v != null);
         public bool IsFull => capacity <= Count;
         public bool IsEmpty => capacity == 0;
 
@@ -32,10 +32,10 @@ namespace GarageProject
             if (IsFull) return false;      
             if (!IsFull)
             {
-                for (int i = 0; i < list.Length; i++)
-                    if (list[i] == null)
+                for (int i = 0; i < arr.Length; i++)
+                    if (arr[i] == null)
                     {
-                        list[i] = vehicle;
+                        arr[i] = vehicle;
                         break;
                     }
             }
@@ -48,10 +48,10 @@ namespace GarageProject
 
             //var numbersList = list.ToList();
             //numbersList.Remove(vehicle);
-            for (int i = 0; i < list.Length; i++)
-                if (list[i] == vehicle)
+            for (int i = 0; i < arr.Length; i++)
+                if (arr[i] == vehicle)
                 {
-                    list[i] = null;
+                    arr[i] = null;
                     break;
                 }
             return true;
@@ -60,14 +60,14 @@ namespace GarageProject
         public int Capacity()
         {
           // return  sizeof(list) / sizeof(list[0]) ;
-           var numbersList = list.ToList();
+           var numbersList = arr.ToList();
             return numbersList.Capacity;
         }
 
         //public int Capacity => list.Capacity;
 
         // Get index from list
-        public T this[int index] => list[index];
+        public T this[int index] => arr[index];
 
         // add vehicle
         //public bool add(t item)
@@ -80,7 +80,7 @@ namespace GarageProject
 
         public IEnumerator<T> GetEnumerator()
         {
-            foreach (T item in list)
+            foreach (T item in arr)
             {
                 if(item != null)
                 yield return item;

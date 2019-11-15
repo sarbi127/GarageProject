@@ -82,8 +82,9 @@ namespace GarageProject
         public void CapacityGarageHandler(string input2)
         {
             int IntValue = uI.Validinput(input2);
+            garage = new Garage<Vehicle>(IntValue);
 
-            garage.capacity = IntValue;
+            //garage.capacity = IntValue;
 
             Console.WriteLine("\nMax Garage Capacity: {0}", garage.capacity );
             //return capNew;
