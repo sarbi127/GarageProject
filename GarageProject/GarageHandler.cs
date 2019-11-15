@@ -9,27 +9,27 @@ namespace GarageProject
     {
         Garage<Vehicle> garage;
         UI uI = new UI();
-    
 
+        //constructor
         public GarageHandler(int capacity)
         {
             garage = new Garage<Vehicle>(capacity);
         }
 
-        public void WriteAllHandler()
-        {
-            foreach (var v in garage)
-            {
-                uI.WriteAll(v);
-            }
+        //public void WriteAllHandler()
+        //{
+        //    foreach (var v in garage)
+        //    {
+        //        uI.WriteAll(v);
+        //    }
 
-        }
+        //}
 
+        // Vehicles Count
         public void CountVehicleHandler()
         {
             var dict = new Dictionary<string, int>
             {
-
                 { "car" , 0 },
                 { "motorcycle" , 0 },
                 { "mopeds" , 0 },
@@ -37,7 +37,6 @@ namespace GarageProject
                 { "bus" , 0 },
                 { "boat" , 0 },
                 { "bicycle" , 0 },
-
             };
 
             foreach (var v in garage)
@@ -54,11 +53,13 @@ namespace GarageProject
             uI.CountVehicleWrite(dict);
         }
 
+        // Add to Arry
         public bool Add(Vehicle vehicle)
         {
           return  garage.Add(vehicle);
         }
 
+        // Remove to Arry
         public bool Remove(Vehicle vehicle)
         {
             return garage.Remove(vehicle);
@@ -74,6 +75,7 @@ namespace GarageProject
                     garage.Remove(garage[i]);
                     //mylist.RemoveAt(i);
                 }
+               
             }
 
         }
@@ -94,6 +96,7 @@ namespace GarageProject
         // Find vehicle with color and wheels
         public void FindVehicleColorwheelsHandler(string valueColor, int IntValue)
         {
+            bool InGarage = false;
             foreach (var v in garage)
             {
                 if (v.Color == valueColor && v.NumWheels == IntValue)
@@ -102,15 +105,22 @@ namespace GarageProject
                     string VehicleRegNo = v.RegNo;
 
                     uI.FindVehicleColorwheelsHandlerWrite(valueColor, IntValue, VehicleName, VehicleRegNo);
+                    InGarage = true;
 
                 }
-
+              
             }
+            if (InGarage == false)
+            {
+                uI.NotFound();
+            }
+
         }
 
         internal IEnumerable<Vehicle> GetVehicleInfo()
         {
             return garage.ToList();
+
           //return  garage.Select(v => new VehiclePrint()
           //  {
           //      regNumber = v.RegNo,
@@ -121,6 +131,7 @@ namespace GarageProject
         // Search vehicle with RegNum
         public void SearchVehicleHandler( string valueRegNum)
         {
+            bool InGarage = false;
             foreach (var v in garage)
             {
                 if (v.RegNo.ToLower() == valueRegNum.ToLower())
@@ -130,9 +141,14 @@ namespace GarageProject
                     int VehicleWheels = v.NumWheels;
 
                     uI.SearchVehicleHandlerWrite(valueRegNum, VehicleName, VehicleColor, VehicleWheels);
-                 
-                }
+                    InGarage = true;
+                }             
             }
+            if (InGarage == false)
+            {
+                uI.NotFound();
+            }
+            
         }
 
     }

@@ -14,7 +14,6 @@ namespace GarageProject
         static void Main(string[] args)
         {
             UI ui = new UI();
-
             var garageHandler = new GarageHandler(10);
             //var garage = new Garage<Vehicle>(20);
 
@@ -29,14 +28,14 @@ namespace GarageProject
 
             while (true)
             {
-                Console.WriteLine("Please navigate through the menu by inputting the number \n(1, 2, 3 ,4, 0) of your choice"
+                Console.WriteLine("Please navigate through the menu by inputting the number \n(1, 2, 3 ,4, 5, 6, 7, 0) of your choice"
 
                      + "\n1. List all parked vehicles"
                      + "\n2. List all vehicle types currently parked in the garage and how many of each kind"
                      + "\n3. Park and unpark specific vehicles from the garage"
-                     + "\n4. Show maximum capacity of the Garage "
+                     + "\n4. Search on a vehicle based on Reg Number"
                      + "\n5. Find a vehicles based on color and wheels"
-                     + "\n6. Search on a vehicle based on Reg Number"
+                     + "\n6. Set maximum capacity of the Garage "
                      + "\n7. Save and load from File"
                      + "\n0. Exit the application");
 
@@ -53,13 +52,11 @@ namespace GarageProject
                 }
                 switch (input)
                 {
-
                     case '1':
 
                         foreach (var v in garageHandler.GetVehicleInfo())
                         {
-                            Console.WriteLine($"this vehicle park: {v.Name}, {v.Color}, {v.RegNo}");
-                            
+                            Console.WriteLine($"this vehicle park: {v.Name}, {v.Color}, {v.RegNo}");                           
                         }
 
                         //garageHandler.WriteAllHandler();
@@ -72,7 +69,7 @@ namespace GarageProject
 
                     case '3':
 
-                        Console.WriteLine("Type '+' or '-'  to add or remove from the list or zero to exit :");
+                        Console.WriteLine("Type '+' or '-'  to park or unpark from the Garage or zero to exit :");
 
                         string input1 = Console.ReadLine();
                         char nav = input1[0];
@@ -81,33 +78,32 @@ namespace GarageProject
                         break;
 
                     case '4':
-                        Console.WriteLine("Please enter garage capacity:");
-                        string input2 = Console.ReadLine();
-                        
-                        garageHandler.CapacityGarageHandler(input2);
-
-                        
-                        break;
-
-                    case '5':
 
                         Console.WriteLine("Enter vehicle color:");
                         string valueColor = Console.ReadLine();
 
                         Console.WriteLine("Enter vehicle numWheels:");
                         string valuenumWheels = Console.ReadLine();
-                        int IntValue = Int32.Parse(valuenumWheels);
 
-                        garageHandler.FindVehicleColorwheelsHandler(valueColor, IntValue);
+                        garageHandler.FindVehicleColorwheelsHandler(valueColor, ui.Validinput(valuenumWheels));
                         break;
 
-                    case '6':
+                    case '5':
 
                         Console.WriteLine("Enter vehicle Reg number:");
                         string valueRegNum = Console.ReadLine();
 
                         garageHandler.SearchVehicleHandler(valueRegNum);
                         break;
+
+                    case '6':
+
+                        Console.WriteLine("Please enter garage capacity:");
+                        string input2 = Console.ReadLine();
+
+                        garageHandler.CapacityGarageHandler(input2);
+                        break;
+
 
                     case '7':
 

@@ -29,10 +29,24 @@ namespace XUnitTestProject1
             var garage = new Garage<Vehicle>(10);
 
             // act
-            var result = garage.Capacity;
+            var result = garage.capacity;
 
             // assert
             Assert.Equal(expect,result);
+
+        }
+
+        public void CapacityTest()
+        {
+            // arrange
+            int expect = 10;
+            var garage = new Garage<Vehicle>(10);
+
+            // act
+            var result = garage.capacity;
+
+            // assert
+            Assert.Equal(expect, result);
 
         }
 
