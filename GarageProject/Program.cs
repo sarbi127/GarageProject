@@ -17,7 +17,7 @@ namespace GarageProject
 
             UI ui = new UI();
             var garageHandler = new GarageHandler(10);
-            var garage = new Garage<Vehicle>(20);
+            //var garage = new Garage<Vehicle>(20);
 
             garageHandler.Add(new Cars("Car", "112AB", "red", 4, 12));
             garageHandler.Add(new Cars("Car", "112B", "red", 4, 12));
@@ -105,21 +105,27 @@ namespace GarageProject
 
                     case '7':
 
-                        BinaryFormatter formatter = new BinaryFormatter();
+                        //GarageFile obj = new GarageFile();
+                        //obj.id = 1;
+                        //obj.name = ".Net";
+
+
+                        IFormatter formatter = new BinaryFormatter();
                         FileStream stream = new FileStream(@"C:\Users\Elev\Desktop\ExampleNew.txt", FileMode.Create, FileAccess.Write);
 
                         formatter.Serialize(stream, garageHandler);
                         stream.Close();
 
                         stream = new FileStream(@"C:\Users\Elev\Desktop\ExampleNew.txt", FileMode.Open, FileAccess.Read);
-                        GarageHandler objnew = (GarageHandler)formatter.Deserialize(stream);
-
+                        Garage<Vehicle> objnew = (Garage<Vehicle>)formatter.Deserialize(stream);
                         foreach (var v in garageHandler.GetVehicleInfo())
                         {
                             printActioMain($"this vehicle park: {v.Name}, {v.Color}, {v.RegNo}");
                         }
-                        //Console.WriteLine(objnew.Name);
 
+
+                        //Console.WriteLine(objnew.name);
+                        //Console.WriteLine(objnew.id);
                         Console.ReadKey();
 
                         break;

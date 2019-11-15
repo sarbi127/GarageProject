@@ -5,7 +5,7 @@ using System.Text;
 namespace GarageProject
 {
     [Serializable]
-     class UI 
+    class UI 
      {
         Action<string> printAction = i => Console.WriteLine(i);
 

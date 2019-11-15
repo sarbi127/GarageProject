@@ -9,7 +9,8 @@ namespace GarageProject
     [Serializable]
     public class Garage<T> : IEnumerable<T> where T : Vehicle
     {
-        public int capacity { get; set; }
+        public int capacity { get; set; } 
+
         private T[] arr;
 
         public Garage(int capacity)
