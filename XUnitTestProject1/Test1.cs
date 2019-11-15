@@ -1,4 +1,5 @@
 using GarageProject;
+using System.Collections.Generic;
 using System;
 using Xunit;
 
@@ -36,23 +37,23 @@ namespace XUnitTestProject1
 
         }
 
-        public void CapacityTest()
+        [Fact]
+        public void CountTest()
         {
             // arrange
-            int expect = 10;
-            var garage = new Garage<Vehicle>(10);
-
+            var expect = 1;
+            var garage= new Garage<Vehicle>(10);
+            garage.Add(new Cars("Car", "112AB", "red", 4, 12));
+            
             // act
-            var result = garage.capacity;
+            var result = garage.Count;
 
             // assert
             Assert.Equal(expect, result);
 
         }
 
-
     }
 
-    
-
+   
  }

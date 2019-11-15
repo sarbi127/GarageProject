@@ -16,15 +16,6 @@ namespace GarageProject
             garage = new Garage<Vehicle>(capacity);
         }
 
-        //public void WriteAllHandler()
-        //{
-        //    foreach (var v in garage)
-        //    {
-        //        uI.WriteAll(v);
-        //    }
-
-        //}
-
         // Vehicles Count
         public void CountVehicleHandler()
         {
@@ -59,7 +50,7 @@ namespace GarageProject
           return  garage.Add(vehicle);
         }
 
-        // Remove to Arry
+        // Remove from Arry
         public bool Remove(Vehicle vehicle)
         {
             return garage.Remove(vehicle);
@@ -117,7 +108,8 @@ namespace GarageProject
 
         }
 
-        internal IEnumerable<Vehicle> GetVehicleInfo()
+        // Get Vehicle Information
+        public IEnumerable<Vehicle> GetVehicleInfo()
         {
             return garage.ToList();
 

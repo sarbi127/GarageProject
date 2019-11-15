@@ -6,7 +6,7 @@ namespace GarageProject
 {
      class UI 
      {
-        // push and pop to list(garage)
+        //Push and pop to garage
         public void ParkUnPark(char nav, string input, GarageHandler garageHandler)
         {
             string valuekey = input.Substring(1);
@@ -18,7 +18,6 @@ namespace GarageProject
                     }
                 case '+':
                     {
-
                         Console.WriteLine("Enter Key number to add vehicle: " +
                             "\n1 Car" +
                             "\n2 Motorcycles" +
@@ -52,8 +51,6 @@ namespace GarageProject
                             {
                                 Console.WriteLine("Enter number of engin:");
                                 valueNum = Console.ReadLine();
-                                //var IntValue = Int32.Parse(valueNum);
-
                                 var IntValue = Validinput(valueNum);
 
                                 garageHandler.Add(new Cars("car", valueregNo, valueColor, 4, IntValue));
@@ -64,8 +61,6 @@ namespace GarageProject
                             {
                                 Console.WriteLine("Enter cylinder volume:");
                                 valueNum = Console.ReadLine();
-                                //int IntValue = Int32.Parse(valueNum);
-
                                 var IntValue = Validinput(valueNum);
 
                                 garageHandler.Add(new Motorcycles("motorcycle", valueregNo, valueColor, 2, IntValue));
@@ -85,8 +80,6 @@ namespace GarageProject
                             {
                                 Console.WriteLine("Enter number of seats:");
                                 valueNum = Console.ReadLine();
-                                //int IntValue = Int32.Parse(valueNum);
-
                                 var IntValue = Validinput(valueNum);
 
                                 garageHandler.Add(new Airplane("Airplane", valueregNo, valueColor, 2, IntValue));
@@ -97,8 +90,6 @@ namespace GarageProject
                             {
                                 Console.WriteLine("Enter number of seats:");
                                 valueNum = Console.ReadLine();
-                                //int IntValue = Int32.Parse(valueNum);
-
                                 var IntValue = Validinput(valueNum);
 
                                 garageHandler.Add(new Bus("Bus", valueregNo, valueColor, 4, IntValue));
@@ -109,8 +100,6 @@ namespace GarageProject
                             {
                                 Console.WriteLine("Enter length:");
                                 valueNum = Console.ReadLine();
-                                //int IntValue = Int32.Parse(valueNum);
-
                                 var IntValue = Validinput(valueNum);
 
                                 garageHandler.Add(new Boat("Boat", valueregNo, valueColor, 0, IntValue));
@@ -121,8 +110,6 @@ namespace GarageProject
                             {
                                 Console.WriteLine("Enter number of seats:");
                                 valueNum = Console.ReadLine();
-                                //int IntValue = Int32.Parse(valueNum);
-
                                 var IntValue = Validinput(valueNum);
 
                                 garageHandler.Add(new Bicycle("Bicycle", valueregNo, valueColor, 2, IntValue));
@@ -144,12 +131,12 @@ namespace GarageProject
                             "\n5 Bus" +
                             "\n6 Boat" +
                             "\n7 Bicycle");
+
                         string valueKey = Console.ReadLine();
 
                         if (valueKey != "1" && valueKey != "2" && valueKey != "3" && valueKey != "4" && valueKey != "5" && valueKey != "6" && valueKey != "7")
                         {
                             Console.WriteLine("Your enter key is wrong!");
-
                         }
                         else
                         {
@@ -169,10 +156,6 @@ namespace GarageProject
                             {
                                 Console.WriteLine("Enter number of engin:");
                                 valueNum = Console.ReadLine();
-                                // int IntValue = Int32.Parse(valueNum);
-
-                                // garage.Remove(x => x.RegNo == valueregNo);
-
                                 var IntValue = Validinput(valueNum);
 
                                 garageHandler.RemoveRegNumHandler(valueregNo);
@@ -183,8 +166,6 @@ namespace GarageProject
                             {
                                 Console.WriteLine("Enter cylinder volume:");
                                 valueNum = Console.ReadLine();
-                                //int IntValue = Int32.Parse(valueNum);
-
                                 var IntValue = Validinput(valueNum);
 
                                 garageHandler.RemoveRegNumHandler(valueregNo);
@@ -203,8 +184,6 @@ namespace GarageProject
                             {
                                 Console.WriteLine("Enter number of seats:");
                                 valueNum = Console.ReadLine();
-                                //int IntValue = Int32.Parse(valueNum);
-
                                 var IntValue = Validinput(valueNum);
 
                                 garageHandler.RemoveRegNumHandler(valueregNo);
@@ -215,8 +194,6 @@ namespace GarageProject
                             {
                                 Console.WriteLine("Enter number of seats:");
                                 valueNum = Console.ReadLine();
-                                //int IntValue = Int32.Parse(valueNum);
-
                                 var IntValue = Validinput(valueNum);
 
                                 garageHandler.RemoveRegNumHandler(valueregNo);
@@ -227,8 +204,6 @@ namespace GarageProject
                             {
                                 Console.WriteLine("Enter length:");
                                 valueNum = Console.ReadLine();
-                                //int IntValue = Int32.Parse(valueNum);
-
                                 var IntValue = Validinput(valueNum);
 
                                 garageHandler.RemoveRegNumHandler(valueregNo);
@@ -239,8 +214,6 @@ namespace GarageProject
                             {
                                 Console.WriteLine("Enter number of seats:");
                                 valueNum = Console.ReadLine();
-                                //int IntValue = Int32.Parse(valueNum);
-
                                 var IntValue = Validinput(valueNum);
 
                                 garageHandler.RemoveRegNumHandler(valueregNo);
@@ -253,11 +226,6 @@ namespace GarageProject
 
             }
         }
-
-        //public void WriteAll(Vehicle v)
-        //{
-        //    Console.WriteLine($"This vehicle park: {v.Name}, {v.RegNo}, {v.Color}");
-        //}
 
         // Write Count number of each vehicle
         public void CountVehicleWrite(Dictionary<string, int> dict)
@@ -297,7 +265,6 @@ namespace GarageProject
             while (!tf)
             {
                 Console.WriteLine("Incorrect format!");
-                //Console.WriteLine("Reenter string to convert");
                 valueNum = Console.ReadLine();
                 tf = Int32.TryParse(valueNum, out retval);
             }

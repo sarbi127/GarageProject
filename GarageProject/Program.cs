@@ -58,8 +58,6 @@ namespace GarageProject
                         {
                             Console.WriteLine($"this vehicle park: {v.Name}, {v.Color}, {v.RegNo}");                           
                         }
-
-                        //garageHandler.WriteAllHandler();
                         break;
 
                     case '2':

@@ -9,13 +9,11 @@ namespace GarageProject
     public class Garage<T> : IEnumerable<T> where T : Vehicle
     {
         public int capacity { get; set; }
-        //private readonly List<T> list;
         private T[] arr;
 
         public Garage(int capacity)
         {
             this.capacity = Math.Max(0, capacity);
-            //list = new List<T>(capacity);
             arr = new T[capacity];
 
         }
@@ -23,8 +21,7 @@ namespace GarageProject
         public bool IsFull => capacity <= Count;
         public bool IsEmpty => capacity == 0;
 
-        //public bool Remove(T item) => list.Remove(item);
-
+        //Add vehicel to the garage with arr
         public bool Add(T vehicle)
         {
             if (IsFull) return false;      
@@ -41,6 +38,7 @@ namespace GarageProject
             return true;
         }
 
+        // Remove vehicel to the garage with arr
         public bool Remove(T vehicle) {
 
             for (int i = 0; i < arr.Length; i++)
@@ -52,27 +50,17 @@ namespace GarageProject
             return true;
         }
 
+        //Capacity of the garage
         public int Capacity()
         {
-          // return  sizeof(list) / sizeof(list[0]) ;
            var numbersList = arr.ToList();
             return numbersList.Capacity;
         }
 
-        //public int Capacity => list.Capacity;
-
         // Get index from list
         public T this[int index] => arr[index];
 
-        // add vehicle
-        //public bool add(t item)
-        //{
-        //    if (isfull) list.removeat(0);
-        //    list.add(item);
-        //    return true;
-
-        //}
-
+        //The IEnumerator interface provides iterative capability for a collection that is internal to a class. 
         public IEnumerator<T> GetEnumerator()
         {
             foreach (T item in arr)
@@ -82,7 +70,9 @@ namespace GarageProject
 
             }
         }
-        IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
+        //The IEnumerable interface provides support for the foreach iteration.
+        //IEnumerable requires that you implement the GetEnumerator method.
+       IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
 
 
     }
