@@ -16,6 +16,7 @@ namespace GarageProject
         Garage<Vehicle> garage;
         UI uI = new UI();
 
+
         //constructor
         public GarageHandler(int capacity)
         {
@@ -25,6 +26,12 @@ namespace GarageProject
         // Vehicles Count
         public void CountVehicleHandler()
         {
+            //var res = garage.GroupBy(v => v.GetType().Name).Select(v => new
+            //{
+            //    Name = v.Key,
+            //    Total = v.Count()
+            //});
+
             var dict = new Dictionary<string, int>
             {
                 { "car" , 0 },

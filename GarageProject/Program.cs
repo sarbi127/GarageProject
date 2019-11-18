@@ -13,11 +13,11 @@ namespace GarageProject
     {
         static void Main(string[] args)
         {
-            Action<string> printActioMain = i => Console.WriteLine(i);
+            //Action<string> printActioMain = i => Console.WriteLine(i);
 
             UI ui = new UI();
             var garageHandler = new GarageHandler(10);
-            //var garage = new Garage<Vehicle>(20);
+            var garage = new Garage<Vehicle>(20);
 
             garageHandler.Add(new Cars("Car", "112AB", "red", 4, 12));
             garageHandler.Add(new Cars("Car", "112B", "red", 4, 12));
@@ -58,7 +58,7 @@ namespace GarageProject
 
                         foreach (var v in garageHandler.GetVehicleInfo())
                         {
-                            printActioMain($"this vehicle park: {v.Name}, {v.Color}, {v.RegNo}");                           
+                            Console.WriteLine($"this vehicle park: {v.Name}, {v.Color}, {v.RegNo}");                           
                         }
                         break;
 
@@ -113,14 +113,14 @@ namespace GarageProject
                         IFormatter formatter = new BinaryFormatter();
                         FileStream stream = new FileStream(@"C:\Users\Elev\Desktop\ExampleNew.txt", FileMode.Create, FileAccess.Write);
 
-                        formatter.Serialize(stream, garageHandler);
+                        formatter.Serialize(stream, garage);
                         stream.Close();
 
                         stream = new FileStream(@"C:\Users\Elev\Desktop\ExampleNew.txt", FileMode.Open, FileAccess.Read);
                         Garage<Vehicle> objnew = (Garage<Vehicle>)formatter.Deserialize(stream);
-                        foreach (var v in garageHandler.GetVehicleInfo())
+                        foreach (var v in garage)
                         {
-                            printActioMain($"this vehicle park: {v.Name}, {v.Color}, {v.RegNo}");
+                            Console.WriteLine($"this vehicle park: {v.Name}, {v.Color}, {v.RegNo}");
                         }
 
 
